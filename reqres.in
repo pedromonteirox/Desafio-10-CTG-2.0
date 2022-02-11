@@ -1,0 +1,134 @@
+{
+	"info": {
+		"_postman_id": "d9e00529-d5e8-499e-b8a3-d568c40c4218",
+		"name": "Desafio 10 - Reqres.in",
+		"description": "Teste criado para o Desafio 10, do curso CTG 2.0, ministrado pelo professor Vinícius Pessoni.  \nNeste teste foi usado a API que se encontrar em:[https://reqres.in/](https://reqres.in/).  \nOs seguintes comandos e testes:  \nGET: Listar Usuários - Teste: Código retornado igual a 200\n\nPOST: Cadastrar Novo Usuário - Teste: Cadastro efetuado com sucesso\n\nPUT: Atualizar Usuario- Teste: Deve conter o nome do cliente cadastrado/atualizado\n\nDEL: Deletar Usuario",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Listar Usuarios",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Após Listar Todos Os Usuários Deve Conter o Código 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Listar Usuarios}}",
+					"host": [
+						"{{Listar Usuarios}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cadastrar Novo Usuario",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Cadastro De Usuário Feito Com Sucesso\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Apolo\",\r\n    \"job\": \"Trainne\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Cadastrar Usuario}}",
+					"host": [
+						"{{Cadastrar Usuario}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Atualizar Usuario",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Após a Ataulização o Nome Devera Ser Apolo\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Apolo\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Apolo\",\r\n    \"job\": \"Analista Jr.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Atualizar Usuario}}",
+					"host": [
+						"{{Atualizar Usuario}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deletar Usuario",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{Deletar Usuario}}",
+					"host": [
+						"{{Deletar Usuario}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
